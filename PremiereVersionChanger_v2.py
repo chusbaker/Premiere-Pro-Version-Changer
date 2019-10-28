@@ -1,3 +1,10 @@
+'''
+Adobe Premiere Pro Version Changer allows you to change the version in which a project has been created (any version of Premiere Pro)
+to version 1, so it can be open in any version of Premiere, as far as the contents of the project allow that. To change the version, 
+go to the line 110 of the code and change the version number there.
+@ chusbaker 2019
+
+'''
 import os
 import gzip
 import xml.etree.ElementTree as et
@@ -100,11 +107,8 @@ def convert(userInput):
         xml_file = tree.getroot()
 
     version = xml_file.find("./Project[@Version]")
-    # v = version.attrib["Version"]
-    # print(type(version))
-    # print("Version >> ", version)
-    # print(version.attrib)
-    version.attrib["Version"] = '36'
+    # change the number in next line so the version to which you want to move to
+    version.attrib["Version"] = '1'
 
     tree.write(full_xml_path)
 
