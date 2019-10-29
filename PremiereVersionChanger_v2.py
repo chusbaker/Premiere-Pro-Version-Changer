@@ -1,4 +1,5 @@
 '''
+
 Adobe Premiere Pro Version Changer allows you to change the version in which a project has been created (any version of Premiere Pro)
 to version 1, so it can be open in any version of Premiere, as far as the contents of the project allow that. To change the version, 
 go to the line 110 of the code and change the version number there.
@@ -38,7 +39,7 @@ class MainWindow(QMainWindow):
     def dropEvent(self, e):
         for url in e.mimeData().urls():
             userInput = url.toLocalFile()
-            print("Change Version on Project: " + userInput)
+            # print("Change Version on Project: " + userInput)
             func(userInput)
         return userInput
 
@@ -54,7 +55,7 @@ def convert(userInput):
     # convert the string to a path
     f = userInput
     file2convert = f.split("/")[-1]                # takes the file name with extension
-    print("file2 convert: ", file2convert)
+    # print("file2 convert: ", file2convert)
     file2comvert_name = file2convert.split(".")[0]  # remove extension
     # file2convert_ext = file2convert.split(".")[1]   # store the extension only
     path2file = os.path.dirname(os.path.abspath(f)) # takes the path to the file
@@ -126,7 +127,7 @@ def convert(userInput):
 def func(userInput):
     # check if userInput has the extension .prproj
     check = userInput
-    print(userInput)
+    # print(userInput)
     if check.endswith('.prproj'):
         label0 = QLabel("Converting file to a previous version of premiere")
         label0.move(120, 80)
@@ -140,14 +141,10 @@ def func(userInput):
 
 def main():
     userInput = "glogal"
-
     app = QApplication(sys.argv)
-
     window = MainWindow()
     window.resize(350, 250)
-
     window.show()
-
     app.exec_()
 
 if __name__ == '__main__':
